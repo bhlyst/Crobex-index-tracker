@@ -22,7 +22,7 @@ jobs:
         run: pip install pandas requests openpyxl
 
       - name: Run script
-        run: python CROBEX_sastav.ipynb
+        run: python CROBEX_sastav.py
 
       - name: Commit & push results
         run: |
