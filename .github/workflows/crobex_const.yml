@@ -58,7 +58,4 @@ jobs:
         with:
           name: crobex_csv
           path: crobex_constituents_history.csv
-          else
-            echo "⚠️ File crobex_constituents_history.csv not found — skipping commit."
-          fi
-          git push
+
