@@ -13,31 +13,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout the repository
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      # 2️⃣ Set up Python
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      # 3️⃣ Install dependencies
       - name: Install dependencies
         run: pip install pandas requests openpyxl
 
-      # 4️⃣ Run your script
       - name: Run script
         run: python CROBEX_sastav.py
 
-      # 5️⃣ Show working directory and files for debugging
       - name: Show working directory and files
         run: |
           pwd
           ls -l
 
-      # 6️⃣ Commit & push CSV if it exists
       - name: Commit & push results
         run: |
           git config --global user.name "github-actions"
@@ -51,10 +45,13 @@ jobs:
             echo "⚠️ CSV file not found — skipping commit."
           fi
 
-      # 7️⃣ Upload CSV as artifact
       - name: Upload CSV artifact
         if: always()  # run even if previous step failed
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
+        with:
+          name: crobex_csv
+          path: crobex_constituents_history.csv
+
         with:
           name: crobex_csv
           path: crobex_constituents_history.csv
