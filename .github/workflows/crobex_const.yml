@@ -38,7 +38,7 @@ jobs:
           git config --global user.email "actions@github.com"
 
           if [ -f crobex_sastav_povijest.csv ]; then
-            git add crobex_constituents_history.csv
+            git add crobex_sastav_povijest.csv
             git commit -m "Update Crobex constituents on $(date +'%Y-%m-%d')" || echo "No changes to commit"
             git push
           else
